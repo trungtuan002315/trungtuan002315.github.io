@@ -1,0 +1,93 @@
+boby{
+	font-family: Geogria, 'Times New Roman', Times, serif;
+}
+p, h3{
+	margin: 0;
+	padding: 0;
+}
+a{
+	color: #0d22ff;
+}
+#container {
+	margin: auto;
+	width: 500px;
+	border: 1px solid #0033FF;
+	overflow: auto;
+}
+#container #title {
+	height: 25px;
+	background: url('images/title_background.gif') repeat;
+	font-weight: bold;
+	line-height: 25px;
+
+}
+#container #information {
+	height: 100px;
+	font-size: 17px;
+	clear: none;
+}
+#container #information img {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+
+	
+}
+#container #information .information {
+	clear: right;
+	overflow: scroll;
+	height: 100%;
+}
+#container .title {
+	font-size: 17px;
+	margin-left: 5px;
+}
+#container .facts img {
+	margin-right: 5px;
+
+}
+#container .facts li {
+	font-size: 17px;
+	line-height: 18px;
+	list-style-type: none;
+
+}
+#container #comment-warp {
+	margin-top: 50px;
+	font-size: 15px;
+}
+#container #comment-warp .comment {
+	background: #ECECEC;
+	padding: 5px;
+	margin-left: 3px;
+	margin-right: 3px;
+	border-radius: 1px;
+}
+#container #comment-warp .posts {
+	padding-left: 20px;
+}
+#container #comment-warp img{
+	float: left;
+	clear: right;
+}
+#container #your_comment{
+	margin-top: 15px;
+	padding: 5px;
+}
+#container #your_comment h3{
+	text-align: center;
+}
+#container #your_comment table .td1{
+	width: 23%;
+}
+#container #your_comment table .td2{
+	width: 77%;
+}
+#container #your_comment table input{
+	width: 38%;
+	height: 20px;
+}
+#container #your_comment table textarea{
+	width: 99%;
+}
+
