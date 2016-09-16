@@ -1,0 +1,19 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+#container{
+width: 1000px;
+}
+#container #main {
+
+}
+#container #main #main_left{
+float: left;
+width: 50%;
+}
+#container #main #main_right{
+width: 25%;
+clear: right;
+}
+
