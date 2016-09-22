@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Exercise 6</title>
+		<link rel="stylesheet" href="style.css">
+		<script language="javascript" src="function.js">
+		</script>
+	</head>
+	<body>
+		<div class="background">
+			<div class="left">
+				<div class="first">
+					<div class="title">
+						<p class="p-title">DAILY CELEBRITY GOSSIP</p>
+					</div>
+					<img class="img1" src="images/1.jpg" alt="showbuzz">
+					<div class="img2">
+						<div class="more-padding">
+							<a class="more" href="#">MORE</a>
+						</div>
+					</div>
+					<div class="content">
+						<p class="content-title">+ RUSSELL CROWE + MORE ...</p>
+						<p>Russell Crowe's son to marry  Keith & Nicole's daughter, plus Renee Zellweger reveals her breast cancer scare</p>
+					</div>
+				</div>
+				<div class="second">
+					<div class="title">
+						<p class="p-title">DAILY CELEBRITY PICS</p>
+					</div>
+					<img class="img1" src="images/2.jpg" alt="showbuzz">
+					<div class="img3">
+						<div class="more-padding">
+							<a class="more" href="#">MORE</a>
+						</div>
+					</div>
+					<div class="content">
+						<p class="content-title">+ BECKHAMS, CLAUDIA CHIFFER ...</p>
+						<p>VICTORIA and David Beckham dine out in NY, as top model Claudia Schiffer  and Eva Herzigova hit the shops in Milan.</p>
+					</div>
+				</div>
+				<div class="first-second-footer">
+					<img class="img4" src="images/confidential-logo.gif" alt="confidential-logo">
+				</div>
+				<div class="third">
+					<div class="title2">
+						<p class="p-title">TOP 3 MOVIES TRAILER</p>
+					</div>
+					<div class="click" onclick="hide1()">
+						<a class="p-title">The house bunny (M)</a>
+						<img class="img-click" src="images/top.gif" alt="top2" id="img1" >
+					</div>
+					<div class="third-content" id="content1">
+						<img class="img5" src="images/girl.jpg" alt="girl">
+						<p class="p-third">When playboy bunny Shelly is tossed out of the mansion, she falls in with with the sorontly girls from Zeta Alpha Zeta.</p>
+						<div class="link"><a class="a1" href="#">&nbsp;&nbsp;Watch now</a></div>
+					</div>
+					<div class="click1" onclick="hide2()" >
+						<a class="p-title">Eagle Eye (M)</a>
+						<img class="img-click" src="images/top.gif" alt="top2" id="img2" >
+					</div>
+					<div class="third-content" id="content2">
+						<img class="img5" src="images/girl.jpg" alt="girl">
+						<p class="p-third">When playboy bunny Shelly is tossed out of the mansion, she falls in with with the sorontly girls from Zeta Alpha Zeta.</p>
+						<div class="link"><a class="a1" href="#">&nbsp;&nbsp;Watch now</a></div>
+					</div>
+					<div class="click1" onclick="hide3()">
+						<a class="p-title">Journey To The Centre Of The Earth(PG)</a>
+						<img class="img-click" src="images/top.gif" alt="top2" id="img3" >
+					</div>
+					<div class="third-content" id="content3">
+						<img class="img5" src="images/girl.jpg" alt="girl">
+						<p class="p-third">When playboy bunny Shelly is tossed out of the mansion, she falls in with with the sorontly girls from Zeta Alpha Zeta.</p>
+						<div class="link"><a class="a1" href="#">&nbsp;&nbsp;Watch now</a></div>
+					</div>
+					<div class="select">
+						<img class="img6" src="images/now-showing-icon.gif" alt="now-showing-icon">
+						<div class="show"><a class="p-show">Now Showing</a>
+						<select name="select movie">
+							<option value="action">Select Movie</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="fourth">
+				<div class="title2">
+					<p class="p-title">TOP 3 MOVIE REVIEWS</p>
+				</div>
+				<div class="fourth-title">
+					<a class="p-title1">Eagle Eye</a>
+					<div class="img-click1">
+					</div>
+				</div>
+				<div class="fourth-content">
+					<img class="img7" src="images/3.jpg" alt="eagle eye">
+					<p class= "p-third">SHIA LaBeouf hits the ground running in Eagle eye, an againts the clock conspiracy thriller with a timely technological...</p>
+					<div class="link1"><a class="a1" href="#">&nbsp;&nbsp;View trailer</a></div>
+				</div>
+				<div class="fourth2">
+					<div class="fourth-title2">
+						<a class="p-title1">House Bunny</a>
+						<div class="img-click2">
+						</div>
+					</div>
+					<div class="fourth-content">
+						<img class="img7" src="images/4.jpg" alt="eagle eye">
+						<p class= "p-third">IF YOU left Legally Blonde and Revenge of the Nerds DVDs in a darkened room for long enough, something like the House Bun </p>
+						<div class="link1"><a class="a1" href="#">&nbsp;&nbsp;View trailer</a></div>
+					</div>
+					<div class="fourth3">
+						<div class="fourth3-left">
+							<div class="link2"><a class="a1" href="#">&nbsp;&nbsp;Local cinema listing</a></div>
+						</div>
+						<div class="fourth3-right">
+							<a class="more2" href="#">+MORE MOVIES</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<img class="right" src="images/entertainment.png" alt="entertainment">
+			<input class="input" type="text">
+			<button class="button"><b>SEARCH</b></button>
+		</div>
+	</div>
+	<div class="background2">
+		<div class="item">
+			<a href="#">
+				<img class="img6" src="images/thuchanh.png" alt="mobile">
+				<p class="p1">News on your mobile</p>
+			</a>
+		</div>
+		<div class="item">
+			<a href="#">
+				<img class="img6" src="images/thuchanh1.png" alt="rss">
+				<p class="p1">RSS feeds</p>
+			</a>
+		</div>
+		<div class="item">
+			<a href="#">
+				<img class="img6" src="images/thuchanh2.png" alt="newsletter">
+				<p class="p1">Newsletter</p>
+			</a>
+		</div>
+		<div class="item">
+			<a href="#">
+				<img class="img6" src="images/thuchanh3.png" alt="send-stories">
+				<p class="p1">Send your news stories</p>
+			</a>
+		</div>
+		<div class="item">
+			<a href="#">
+				<img class="img6" src="images/thuchanh4.png" alt="send-photo">
+				<p class="p1">Send your news photos</p>
+			</a>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer-right">
+			<p><a class="a3" href="#">Back to top</a></p>
+		</div>
+		<div class="footer-left">
+			<p><a class="a3" href="#">Help</a> | <a class="a3" href="#">Contact us</a> | <a class="a3" href="#">Advertise with us</a> | <a class="a3" href="#">Job Opportunities </a> | <a class="a3" href="#">Terms and Conditions</a> | <a class="a3" href="#">Privacy Policy</a> | <a class="a3" href="#">Accessibility</a> | <a class="a3" href="#">Sitemap</a> | <a class="a3" href="#">News Headlines from our Parterna</a></p>
+		</div>
+		<div class="copy">
+			<p>Copyright 2008 News Limited. All times AEST (GMT + 10)</p>
+		</div>
+	</div>
+</body>
+</html>
