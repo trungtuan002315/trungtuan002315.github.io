@@ -325,9 +325,10 @@ a {
 	background-color: white;
 	color: #0080C0;
 	font-size: 12px;
-	padding: auto;
-	margin-top: -13px;
-	margin-left: 142px;
+	margin: auto;
+	margin-top: -10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 .footer-right {
 	float: right;
