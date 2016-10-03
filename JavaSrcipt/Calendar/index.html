@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Calendar</title>
+        <link rel="stylesheet" media="screen, print, handheld" type="text/css" href="css/calendar.css" />
+        <script type="text/javascript" src="js/calendar.js" language="javasrcipt"></script>
+    </head>
+    <body>
+        <div id="header">
+            <input type="text" id="output" name="output"  />
+            <img src="images/calendar.png" alt="images/calendar.png" onclick="openCalendar()">
+        </div>
+        <div id="container">
+            <table id="content" border="1" style="text-align:center;">
+                <tr>
+                    <td><a href ="#"><img src="images/double-left.png" alt="calendar" onClick="previousYear();"/></a></td>
+                    <td><a href ="#"><img src="images/left.png" alt="calendar" onClick="previousMonth();"/></a></td>
+                    <td colspan="2"><script type="text/javascript">
+                                      forMonth();
+                                    </script>
+                    </td>
+                    <td><script type="text/javascript">
+                                      forYear();
+                                    </script>   
+                    </td>
+                    <td><a href ="#"><img src="images/right.png" alt="calendar" onClick="nextMonth();"/></a></td>
+                    <td><a href ="#"><img src="images/double-right.png" alt="calendar" onClick="nextYear();"/></a></td>
+                </tr>        
+                        <script type="text/javascript">
+                                    dawDayOfWeek();
+                                    dawCalender(month, year);
+                                    </script>          
+            </table>
+        </div>
+    </body>
+    </html> 
