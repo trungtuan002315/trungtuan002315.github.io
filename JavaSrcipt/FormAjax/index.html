@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Form Ajax</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script type="text/javascript" src ="js/formAjax.js"></script>
+		<link rel="stylesheet" media="screen, print, handheld" type="text/css" href="css/calendar.css" />
+		<script type="text/javascript" src="js/calendar.js" language="javasrcipt"></script>
+	</head>
+	<body>
+		<form method="POST"  name="register" action="formAjax('xyly.php');">
+			<table border="0">
+				<tr>
+					<td table-item><p>Username:</p></td>
+					<td><input type="text" name="username" id="username" class="test" value="" onchange="checkUserName()" /></td>
+					<td><span id="error_name" class="error"></span></td>
+				</tr>
+				<tr>
+					<td table-item><p>Passwork:</p></td>
+					<td><input type="password" name="password" id="password" class="test" value="" onchange="checkPassWord()"/></td>
+					<td><span id="error_pass" class="error"></span></td>
+				</tr>
+				<tr>
+					<td table-item><p>Email:</p></td>
+					<td><input type="text" name="email" id="email" class="test" value="" onchange="checkEmail()" /></td>
+					<td><span id="error_email" class="error"></span></td>
+				</tr>
+				<tr>
+					<td table-item>Brithday:</td>
+					<td>
+						<div id="header">
+							<input type="text" id="output" name="output" onchange="checkBrithday()" />
+							<img src="images/calendar.png" alt="images/calendar.png" onclick="openCalendar()">
+						</div>
+						<table id="content" border="1" style="text-align:center;">
+							<tr>
+								<td><a href ="#"><img src="images/double-left.png" alt="calendar" onClick="previousYear();"/></a></td>
+								<td><a href ="#"><img src="images/left.png" alt="calendar" onClick="previousMonth();"/></a></td>
+								<td colspan="2"><script type="text/javascript">
+												forMonth();
+									</script>
+								</td>
+								<td><script type="text/javascript">
+												forYear();
+									</script>
+								</td>
+								<td><a href ="#"><img src="images/right.png" alt="calendar" onClick="nextMonth();"/></a></td>
+								<td><a href ="#"><img src="images/double-right.png" alt="calendar" onClick="nextYear();"/></a></td>
+							</tr>
+							<script type="text/javascript">
+								dawDayOfWeek();
+								dawCalender(month, year);
+							</script>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="submit" class="button" value="Submit"/>
+						<input type="reset" class="button" value="Reset"/>
+					</td>
+				</tr>
+			</table>
+			<div id="result"></div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+input{
+	position: relative;
+	margin:0;
+	height: 25px;
+}
+#header img {
+	position: absolute;
+	left: 326px;
+	margin-top: -32px;
+}
+#content{
+	margin-top: 10px;
+	display: none;
+}
+img:hover{
+    cursor: pointer;
+}
+table td {
+    height: 30px;
+    text-align: center;
+	width: 50px;
+}
+.item{
+
+}
