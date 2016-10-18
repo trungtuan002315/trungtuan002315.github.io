@@ -5,17 +5,17 @@ var month = new Date().getMonth();
 var year = new Date().getFullYear();
 var positionDateNow;
 
-// reate combobox month
-function forMonth(){
+// create combobox month
+function forMonth() {
     document.write('<SELECT id="month_" onchange="onChangeMonth();">');
     for (var i = 0; i < months.length; i++) {
-        document.write('<option value="'+ i +'">' + months[i] + '</option> ');
+        document.write('<option value="' + i + '">' + months[i] + '</option> ');
         }    
     document.write("</SELECT>");
 
 }
-// reate combobox year
-function forYear(){
+// create combobox year
+function forYear() {
  document.write('<SELECT id="year_" onchange="onChangeYear();">');
     for (var i = 1900; i <=2030; i++) {
         document.write('<option value="'+ i +'">' +i+ '</option> ');
@@ -24,7 +24,7 @@ function forYear(){
 
 }
 
-// reate list dayOfWeek
+// create list dayOfWeek
 function dawDayOfWeek() {
     document.write('<tr>');
     for (var i = 0; i < dayOfWeek.length; i++) {
@@ -33,13 +33,13 @@ function dawDayOfWeek() {
     document.write('</tr>');    
 }
 
-// reate calendar 
-function dawCalender(month, year){
+// create calendar 
+function dawCalender(month, year) {
     var count = 1;
     for (var i = 0; i < 6; i++) {
         document.write('<tr>');
         for (var j = 0; j< 7; j++) {
-            document.write('<td ID="item' + count + '" CLASS="item" onClick="chooseDay('+count+');" ></td>');
+            document.write('<td ID="item' + count + '" CLASS="item" onClick="chooseDay(' + count + ')"></td>');
             count++;
         }
         document.write('</tr>');
@@ -49,13 +49,18 @@ function dawCalender(month, year){
     setYear();
 }
 
-function setMonth(){
+//set value month
+function setMonth() {
     document.getElementById("month_").value= month;
 }
-function setYear(){
+
+//set value year
+function setYear() {
     document.getElementById("year_").value= year;
 }
-function previousYear(){
+
+//previous year
+function previousYear() {
     erase();
     year--;
     console.log(year);
@@ -63,7 +68,8 @@ function previousYear(){
     setMonth();
     setYear();
 }
-function previousMonth(){
+//previous month
+function previousMonth() {
     erase();
     month--;
     if( month < 0){
@@ -76,10 +82,11 @@ function previousMonth(){
     setYear();
 }
 
-function nextMonth(){
+//next month
+function nextMonth() {
     erase();
     month++;
-    if(month > 11){
+    if (month > 11) {
         month = 0;
         year++;
     }
@@ -88,30 +95,38 @@ function nextMonth(){
     setYear();
 }
 
-function nextYear(){
+// next year
+function nextYear() {
     erase();
     year++;
     setDay();
     setMonth();
     setYear();
 }
+
+// erase calendar old
 function erase() {
         for (var i = 1; i <= 42; i++) {
             document.getElementById("item" + i).innerHTML = "";
             document.getElementById("item" + i).style.background = "none";
         }
 }
-function onChangeMonth(){
+
+//select combobox month
+function onChangeMonth() {
     erase();
     month = document.getElementById("month_").value;
     setDay();
 }
-function onChangeYear(){
+//select combobox year
+function onChangeYear() {
     erase();
     year = document.getElementById("year_").value;
     setDay();
 }
-function chooseDay(position){
+
+//chose day/month/year
+function chooseDay(position) {
     var day =  document.getElementById("item" + position).innerHTML;
     var month_now = document.getElementById("month_").value;
     month_now =parseInt(month_now) +1;
@@ -121,43 +136,45 @@ function chooseDay(position){
     document.getElementById("output").value = results;
     document.getElementById("content").style.display="none";
 }
-function openCalendar(){
+
+function openCalendar() {
     document.getElementById("content").style.display="block";
 }
 
-function setDay(){
+//set day now
+function setDay() {
     var dateNow = new Date().getDate();
     var month_now = new Date().getMonth();
     var year_now = new Date().getFullYear();
     var day = new Date(year, month, 1).getDay();
     var previous_month = month;
     var next_month = month;
-    if(((year%4==0)&&(year%100!=0))|| (year%400==0)){
-        numberDayInMonth[1]=29;
+    if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
+        numberDayInMonth[1] = 29;
     }
-    else{
-        numberDayInMonth[1]=28;
+    else {
+        numberDayInMonth[1] = 28;
     }
-    if(previous_month<0){
-        month=11;
+    if (previous_month < 0) {
+        month = 11;
     }
-    if (next_month==12) {
-        month = 0;
+    if (next_month == 12) {
+        month = 0 ;
     }
     var numberDay = numberDayInMonth[month];
     var numberDayOfPreviousMonth = numberDayInMonth[previous_month];
     var numberDayOfNextMonth = numberDayInMonth[next_month];
     var check = true;
-    var count =1;
-    var position =1;
+    var count = 1;
+    var position = 1;
     var positionStart = day;
     var positionStop = parseInt(day)+parseInt(numberDay);
     for (var i = 0; i < 6; i++) {
         for (var j = 0; j < 7; j++) {
-            if(count>=day){
-                check==true;
+            if(count >= day){
+                check == true;
             }
-            if(check==true && position<=numberDay){
+            if(check == true && position <= numberDay){
                 document.getElementById("item" + (position + day)).innerHTML = position;
                 document.getElementById("item" + (position + day)).style.background = "#99ccff";
                 if(dateNow == position && month_now == month && year_now == year){
@@ -172,13 +189,13 @@ function setDay(){
         }
 
     }
-    for (var i = positionStart; i > 0; i--) {
-            document.getElementById("item" + (i)).innerHTML = numberDayOfPreviousMonth--;
-            document.getElementById("item" + (i)).style.color = "#ccccff";
-        }
-    for (var j = 1; j <= (42 - positionStop); j++) {
-            document.getElementById("item" + (j + positionStop)).innerHTML = j;
-            document.getElementById("item" + (j + positionStop)).style.color = "#ccccff";
-    }
+    // for (var i = positionStart; i > 0; i--) {
+    //         document.getElementById("item" + (i)).innerHTML = numberDayOfPreviousMonth--;
+    //         document.getElementById("item" + (i)).style.color = "#ccccff";
+    //     }
+    // for (var j = 1; j <= (42 - positionStop); j++) {
+    //         document.getElementById("item" + (j + positionStop)).innerHTML = j;
+    //         document.getElementById("item" + (j + positionStop)).style.color = "#ccccff";
+    // }
 
 }

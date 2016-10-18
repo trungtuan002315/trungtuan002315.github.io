@@ -51,7 +51,7 @@ function getPrevious() {
 function getNext() {
 	document.getElementById("item" + position).style.background = "#b3b3ff";
 	position++;
-	if(position > 3) {
+	if (position > 3) {
 		position = 0;
 	}
 	document.getElementById("item" + position).style.background = "#3333ff"	;
@@ -65,7 +65,7 @@ function onclickItem(current_position) {
 	position = current_position;
 	document.getElementById("item" + position).style.background = "#3333ff";	
 	for(var i = 0; i < image_list.length; i++) {
-		if(i != current_position) {
+		if (i != current_position) {
 				document.getElementById("item" + i).style.background = "#b3b3ff";
 		}
 	}

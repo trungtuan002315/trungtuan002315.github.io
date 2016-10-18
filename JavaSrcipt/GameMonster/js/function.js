@@ -1,81 +1,79 @@
 var canvas = document.getElementById("canvas");
-var footer = document.getElementById("footer");
+var header = document.getElementById("header");
 var context = canvas.getContext("2d");
-var contextAction = footer.getContext("2d");
+var contextAction = header.getContext("2d");
 document.body.appendChild(canvas);
-var score = 10; // score
-var tempScore = 10;
-var bgready = false; // background container
+var background = false;
+var speed = 1;
 var run = true;
-var numberMonster = 1; // number monstar random
-var bgImage = new Image();
-var bestScore = 10;
-var heart = 5;
-var speed = 1; // speed
-var countClick = 0;
-var booleanPause = false;
+var heart = 3;
 var booleanStop = false;
+var booleanPause = false;
 var booleanBoom = true;
+var countClick = 0;
 var numberBoom = 3;
 var numberStop = 3;
+var numberMonster = 1;
+var bestScore = 10;
+var tempScore = 10
+var score = 20;
 var listBlood = new Array();
-
-var monsterImage = new Image();
-monsterImage.onload = function() {
-}
-monsterImage.src = "images/monster.gif";
-
-bgImage.onload = function() {
-	bgready = true;
-}
-bgImage.src = "images/background.jpg";
-
-
-if (typeof(Storage) !== "underfined") {
-	localStorage.setItem("bestScore", bestScore);
+var imgMonster = new Image();
+			
+if (typeof(Storage) !== "underfined"){
+	localStorage.setItem( "bestScore",bestScore);
 }
 
-// create stop image
-var stopImage = new Image();
-stopImage.onload = function() {
+// draw image monster
+imgMonster.onload = function() {
 }
-stopImage.src = "images/stop.png";
-
-// create boom image
-var boomImage = new Image();
-boomImage.onload = function() {
+imgMonster.src = "images/vit.png";
+			
+// draw image background
+var imgBackGround = new Image();
+imgBackGround.onload = function() {
+	background = true;
 }
-boomImage.src = "images/boom.gif";
-
-//create pause image
-var pauseImage = new Image();
-pauseImage.onload = function() {
+imgBackGround.src = "images/background.jpg";
+			
+//draw images boom
+var imgBoom = new Image();
+imgBoom.onload = new function() {
 }
-pauseImage.src = "images/pause.png";
-
-
-//create restart image
-var restartImage = new Image();
-restartImage.onload = function() {
+imgBoom.src = "images/boom.gif";
+			
+//draw image heart
+var imgHeart = new Image();
+imgHeart.onload = new function() {
 }
-restartImage.src = "images/restart.png";
-
-
-//create heart image
-var heartitem = new Image();
-heartitem.onload = function() {
+imgHeart.src = "images/heart.png";
+			
+//draw image blood
+var imgBlood = new Image();
+imgHeart.onload = new function() {
 }
-heartitem.src = "images/heart.png";
-
-
-//create blood image
-var bloodImage = new Image();
-bloodImage.onload = function() {
+imgBlood.src = "images/blood.png";
+			
+//draw image button pause
+var imgPause = new Image();
+imgPause.onload = new function() {
 }
-bloodImage.src = "images/blood.png";
-
-// create Object Monster
-var MonsterOne = {
+imgPause.src = "images/pause.png";
+			
+// draw image button restart
+var imgRestart = new Image();
+imgRestart.onload = new function() {
+}
+imgRestart.src = "images/restart.png";
+			
+// draw image button stop
+var imgStop = new Image();
+imgStop.onload = new function() {
+}
+imgStop.src = "images/stop.png";
+			
+// draw monsterOne -> monsterNight
+var monsterOne = {
 	beginX: 0,
 	beginY: 0,
 	endX: 120,
@@ -90,8 +88,7 @@ var MonsterOne = {
 	dieX: 0,
 	dieY:0
 }
-
-var MonsterTwo = {
+var monsterTow = {
 	beginX: 190,
 	beginY: 0,
 	endX: 190,
@@ -106,8 +103,7 @@ var MonsterTwo = {
 	dieX: 0,
 	dieY:0
 }
-
-var MonsterThree = {
+var monsterThree = {
 	beginX: 380,
 	beginY: 0,
 	endX: 260,
@@ -120,27 +116,24 @@ var MonsterThree = {
 	click: false,
 	show: false,
 	dieX: 0,
-	dieY:0,
-	stop: false
+	dieY:0
 }
-
-var MonsterFour = {
+var monsterFour = {
 	beginX: 380,
 	beginY: 190,
-	endX: 260,
-	endY: 190,
+	endX: 380,
+	endY: 120,
 	startX: 380,
-	startY: 190,
-	stopX: 260,
-	stopY: 190,
+	startY: 120,
+	stopX: 380,
+	stopY: 120,
 	speed: speed,
 	click: false,
 	show: false,
 	dieX: 0,
 	dieY:0
 }
-
-var MonsterFive = {
+var monsterFive = {
 	beginX: 380,
 	beginY: 380,
 	endX: 260,
@@ -155,8 +148,7 @@ var MonsterFive = {
 	dieX: 0,
 	dieY:0
 }
-
-var MonsterSix = {
+var monsterSix = {
 	beginX: 190,
 	beginY: 380,
 	endX: 190,
@@ -171,14 +163,13 @@ var MonsterSix = {
 	dieX: 0,
 	dieY:0
 }
-
-var MonsterSeven = {
+var monsterSeven = {
 	beginX: 0,
 	beginY: 380,
 	endX: 120,
 	endY: 260,
 	startX: 0,
-	startY: 380,
+	startY: 38,
 	stopX: 120,
 	stopY: 260,
 	speed: speed,
@@ -187,14 +178,13 @@ var MonsterSeven = {
 	dieX: 0,
 	dieY:0
 }
-
-var MonsterEight = {
+var monsterEight = {
 	beginX: 0,
 	beginY: 190,
 	endX: 120,
 	endY: 190,
 	startX: 0,
-	startY: 190,
+	startY: 380,
 	stopX: 120,
 	stopY: 190,
 	speed: speed,
@@ -203,41 +193,116 @@ var MonsterEight = {
 	dieX: 0,
 	dieY:0
 }
-
-var MonsterNine = {
-	startX: Math.floor((Math.random() * 500) + 1),
-	startY: Math.floor((Math.random() * 500) + 1),
-	stopX: Math.floor((Math.random() * 500) + 1),
-	stopY: Math.floor((Math.random() * 500) + 1),
+var monsterCenter = {
+	startX: Math.floor((Math.random() * 500) +1),
+	startY: Math.floor((Math.random() * 500) +1),
+	stopX: Math.floor((Math.random() * 500) +1),
+	stopY: Math.floor((Math.random() * 500) +1),
 	speed: 1,
 	click: false,
 	show: true,
 	dieX: 0,
-	dieY:0
+	dieY: 0
 }
 
-// Create Event Click For Buttons
-footer.addEventListener("click", function(e) {
+			//event onClick monster 
+canvas.addEventListener("click", function(e){
+	locationX = e.pageX - this.offsetLeft;
+	locationY = e.pageY - this.offsetTop;
+	if (!booleanPause) {
+		score -= 5;
+		tempScore -= 5;
+		heart--;
+		if (monsterOne.show) {
+			executeAction(monsterOne, locationX, locationY);
+		}
+		if (monsterTow.show) {
+			executeAction(monsterTow, locationX, locationY);
+		}
+		if (monsterThree.show) {
+			executeAction(monsterThree, locationX, locationY);
+		}
+		if (monsterFour.show) {
+			executeAction(monsterFour, locationX, locationY);
+		}
+		if (monsterFive.show) {
+			executeAction(monsterFive, locationX, locationY);
+		}
+		if (monsterSix.show) {
+			executeAction(monsterSix, locationX, locationY);
+		}
+		if (monsterSeven.show) {
+			executeAction(monsterSeven, locationX, locationY);
+		}
+		if (monsterEight.show) {
+			executeAction(monsterEight, locationX, locationY);
+		}
+		if (monsterCenter.show && monsterCenter.startX < locationX && locationX < (monsterCenter.startX + imgMonster.width) && monsterCenter.startY < locationY && locationY < (monsterCenter.startY + imgMonster.height)) {
+			heart++;
+			score += 15;
+			tempScore += 15;
+			countClick++;
+			monsterCenter.click = true;
+			monsterCenter.show = false;
+			monsterCenter.dieX = monsterCenter.startX;
+			monsterCenter.dieY = monsterCenter.startY;
+			monsterCenter.startX = Math.floor((Math.random() * 500) + 1);
+			monsterCenter.startY = Math.floor((Math.random() * 500) + 1);
+			monsterCenter.stopX = Math.floor((Math.random() * 500) + 1);
+			monsterCenter.stopY = Math.floor((Math.random() * 500) + 1);
+			addElementBlood(monsterCenter.dieX, monsterCenter.dieY);
+		}
+	}
+	if(booleanStop) {
+		if(monsterOne.show) {
+			executeActionStop(monsterOne, locationX, locationY);
+		}
+		if(monsterTow.show) {
+			executeActionStop(monsterTow, locationX, locationY);
+		}
+		if(monsterThree.show) {
+			executeActionStop(monsterThree, locationX, locationY);
+		}
+		if(monsterFour.show) {
+			executeActionStop(monsterFour, locationX, locationY);
+		}
+		if(monsterFive.show) {
+			executeActionStop(monsterFive, locationX, locationY);
+		}
+		if(monsterSix.show) {
+			executeActionStop(monsterSix, locationX, locationY);
+		}
+		if(monsterSeven.show) {
+			executeActionStop(monsterSeven, locationX, locationY);
+		}
+		if(monsterEight.show) {
+			executeActionStop(monsterEight, locationX, locationY);
+		}
+		if(monsterCenter.show) {
+			executeActionStop(monsterCenter, locationX, locationY);
+		}
+	}
+}, false);
+
+// event button onClick Stop, Pause, Restart, Bomm	
+header.addEventListener("click", function(e) {
 	var locationX = e.pageX - this.offsetLeft;
 	var locationY = e.pageY - this.offsetTop;
 
 	// Button Pause
-	if (locationX > 400 && locationX < 440 && locationY > 60 && locationY < 100) {
-		console.log("PAUSE");
-		booleanStop = false;
-		if (run) {
-			run = false;
-			booleanPause = true;
-		} else {
-			run = true;
-			main();
-			booleanPause = false;
-		}
+	if(locationX > 400 && locationX < 440 && locationY > 60 && locationY < 100) {
+		 booleanStop = false;
+		 if (run) {
+		 	run = false;
+		 	booleanPause = true;
+		 } else {
+		 	run = true;
+		 	main();
+		 	booleanPause = false;
+		 }
 	}
-
 	// Button Restart
 	if (locationX > 450 && locationX < 490 && locationY > 60 && locationY < 100) {
-		console.log("RESTART");
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		restart();
 		main();
@@ -247,7 +312,6 @@ footer.addEventListener("click", function(e) {
 	// Button Boom
 	if (locationX > 290 && locationX < 340 && locationY > 60 && locationY < 100) {
 		if (booleanBoom) {
-			console.log("BOOM");
 			executeActionBoom();
 			numberBoom--;
 			if (numberBoom <= 0) {
@@ -259,7 +323,6 @@ footer.addEventListener("click", function(e) {
 
 	// Button Stop
 	if (locationX > 350 && locationX < 390 && locationY > 60 && locationY < 100) {
-		console.log("STOP");
 		booleanPause = false;
 		if (numberStop > 0) {
 			if (run) {
@@ -282,115 +345,43 @@ footer.addEventListener("click", function(e) {
 			booleanStop = false;
 		}
 	}
-})
+});
 
-
-// Create Event Click For Monster
-canvas.addEventListener("click", function (e) {
-	locationX = e.pageX - this.offsetLeft;
-	locationY = e.pageY - this.offsetTop;
-
-	if (!booleanPause) {
-		score -= 5;
-		tempScore -= 5;
-		heart--;
-		if (MonsterOne.show) {
-			executeAction(MonsterOne, locationX, locationY);
-		}
-
-		if (MonsterTwo.show) {
-			executeAction(MonsterTwo, locationX, locationY);
-		}
-
-		if (MonsterThree.show) {
-			executeAction(MonsterThree, locationX, locationY);
-		}
-
-		if (MonsterFour.show) {
-			executeAction(MonsterFour, locationX, locationY);
-		}
-
-		if (MonsterFive.show) {
-			executeAction(MonsterFive, locationX, locationY);
-		}
-
-		if (MonsterSix.show) {
-			executeAction(MonsterSix, locationX, locationY);
-		}
-
-		if (MonsterSeven.show) {
-			executeAction(MonsterSeven, locationX, locationY);
-		}
-
-		if (MonsterEight.show) {
-			executeAction(MonsterEight, locationX, locationY);
-		}
-
-		if (MonsterNine.show && MonsterNine.startX < locationX && locationX < (MonsterNine.startX + monsterImage.width) && MonsterNine.startY < locationY && locationY < (MonsterNine.startY + monsterImage.height)) {
-			var soundClick = new Audio('music/audio.mp3');
-			soundClick.play();
+// event onClick canvas
+var executeAction = function(monster, locationX, locationY) {
+	if (monster.click) {
+		if (monster.startX < locationX &&  locationX < (monster.startX + imgMonster.width) && monster.startY < locationY && locationY < (monster.startY + imgMonster.height)){
+			countClick ++;
 			heart++;
+			if (countClick == 30){
+				heart ++;
+				countClick = 0;
+			}
+			if (countClick % 5 == 0){
+				monsterCenter.show = true;
+			}
 			score += 15;
 			tempScore += 15;
-			countClick++;
-			MonsterNine.click = true;
-			MonsterNine.show = false;
-			MonsterNine.dieX = MonsterNine.startX;
-			MonsterNine.dieY = MonsterNine.startY;
-			MonsterNine.startX = Math.floor((Math.random() * 500) + 1);
-			MonsterNine.startY = Math.floor((Math.random() * 500) + 1);
-			MonsterNine.stopX = Math.floor((Math.random() * 500) + 1);
-			MonsterNine.stopY = Math.floor((Math.random() * 500) + 1);
-			addElementBlood(MonsterNine.dieX, MonsterNine.dieY);
-		}
-	} 
-
-	if (booleanStop) {
-		if (MonsterOne.show) {
-			executeActionStop(MonsterOne, locationX, locationY);
-		}
-
-		if (MonsterTwo.show) {
-			executeActionStop(MonsterTwo, locationX, locationY);
-		}
-
-		if (MonsterThree.show) {
-			executeActionStop(MonsterThree, locationX, locationY);
-		}
-
-		if (MonsterFour.show) {
-			executeActionStop(MonsterFour, locationX, locationY);
-		}
-
-		if (MonsterFive.show) {
-			executeActionStop(MonsterFive, locationX, locationY);
-		}
-
-		if (MonsterSix.show) {
-			executeActionStop(MonsterSix, locationX, locationY);
-		}
-
-		if (MonsterSeven.show) {
-			executeActionStop(MonsterSeven, locationX, locationY);
-		}
-
-		if (MonsterEight.show) {
-			executeActionStop(MonsterEight, locationX, locationY);
-		}
-
-		if (MonsterNine.show) {
-			executeActionStop(MonsterNine, locationX, locationY);
+			monster.click = false;
+			monster.show = false;
+			monster.dieX = monster.startX;
+			monster.dieY = monster.startY;
+			monster.startX = monster.beginX;
+			monster.startY = monster.beginY;
+			monster.stopX = monster.endX;
+			monster.stopY = monster.endY;
+			for (var i = 0; i < numberMonster; i++) {
+				random();
+			}
+			addElementBlood(monster.dieX, monster.dieY)
+			render();
 		}
 	}
-}, false);
-
-
-// Execute Method Action For Button Stop
+}
+// event onClick Stop
 var executeActionStop = function(monster, locationX, locationY) {
-	if (monster.click) {
-		if (monster.startX < locationX && locationX < (monster.startX + monsterImage.width) && monster.startY < locationY && locationY < (monster.startY + monsterImage.height)) {
-			var soundClick = new Audio('music/audio.mp3');
-			soundClick.play();
+	if(monster.click) {
+		if(monster.startX < locationX && locationX < (monster.startX +imgMonster.width) && monster.startY < locationY && locationY < (monster.startY + imgMonster.height)) {
 			score += 10;
 			tempScore += 10;
 			monster.click = false;
@@ -407,230 +398,153 @@ var executeActionStop = function(monster, locationX, locationY) {
 		}
 	}
 }
-
-// Execute Action
-function executeAction(monster, locationX, locationY) {
-	if (monster.click) {
-		if (monster.startX < locationX && locationX < (monster.startX + monsterImage.width) && monster.startY < locationY && locationY < (monster.startY + monsterImage.height)) {
-			var soundClick = new Audio('music/audio.mp3');
-			soundClick.play();
-			heart++;
-			countClick++;
-			if (countClick == 30) {
-				heart++;
-				countClick = 0;
-			}
-			if (countClick % 5 == 0) {
-				MonsterNine.show =  true;
-				console.log("show MonsterNine");
-			}
-			score += 15;
-			tempScore += 15;
-			monster.click = false;
-			monster.show = false;
-			monster.dieX = monster.startX;
-			monster.dieY = monster.startY;
-			monster.startX = monster.beginX;
-			monster.startY = monster.beginY;
-			monster.stopX = monster.endX;
-			monster.stopY = monster.endY;
-			for (var i = 0; i < numberMonster; i++) {
-				random();
-			}
-			addElementBlood(monster.dieX, monster.dieY);
-			render();
-		}
-	}
-}
-
-// Create element blood
-var addElementBlood = function(initX, initY) {
-	var Blood = {
-		initX: initX,
-		initY: initY
-	}
-	listBlood[listBlood.length] = Blood;
-}
-
-// method random monster
-var random = function() {
-	if (!MonsterOne.show) {
-		refreshMonster(MonsterOne);
-		
-	}
-	if (!MonsterTwo.show) {
-		refreshMonster(MonsterTwo);
-	}
-	if (!MonsterThree.show) {
-		refreshMonster(MonsterThree);
-	}
-	if (!MonsterFour.show) {
-		refreshMonster(MonsterFour);
-	}
-	if (!MonsterFive.show) {
-		refreshMonster(MonsterFive);
-	}
-	if (!MonsterSix.show) {
-		refreshMonster(MonsterSix);
-	}
-	if (!MonsterSeven.show) {
-		refreshMonster(MonsterSeven);
-	}
-	if (!MonsterEight.show) {
-		refreshMonster(MonsterEight);
-	}
-	var value = Math.floor((Math.random() * 8) + 1);
-	switch(value) {
-		case 1:
-		if (!MonsterOne.show) {
-			MonsterOne.show = true;
-		}
-		break;
-		case 2:
-		if (!MonsterTwo.show) {
-			MonsterTwo.show = true;
-		}
-		break;
-		case 3:
-		if (!MonsterThree.show) {
-			MonsterThree.show = true;
-		}
-		break;
-		case 4:
-		if (!MonsterFour.show) {
-			MonsterFour.show = true;
-		}
-		break;
-		case 5:
-		if (!MonsterFive.show) {
-			MonsterFive.show = true;
-		}
-		break;
-		case 6:
-		if (!MonsterSix.show) {
-			MonsterSix.show = true;
-		}
-		break;
-		case 7:
-		if (!MonsterSeven.show) {
-			MonsterSeven.show = true;
-		}
-		break;
-		case 8:
-		if (!MonsterEight.show) {
-			MonsterEight.show = true;
-		}
-		break;
-	}
-}
-
-// Create Lever
+			
+// check num_moster and speed for tempScore
 var executeLever = function() {
 	var temp = tempScore / 100;
-	console.log(parseInt(temp));
 	switch (parseInt(temp)) {
 		case 1:
 		speed = 1;
 		numberMonster = 1;
 		break;
+		
 		case 2:
-		speed = 2;
+		speed = 1;
 		numberMonster = 2;
 		break;
+			
 		case 3:
-		speed = 3;
+		speed = 2;
 		numberMonster = 3;
 		break;
+					
 		case 4:
-		speed = 4;
+		speed = 2;
 		numberMonster = 4;
 		break;
+					
 		case 5:
-		speed = 5;
+		speed = 3;
 		numberMonster = 5;
 		break;
+			
 		case 6:
-		speed = 6;
+		speed = 3;
 		numberMonster = 6;
+		break;
+		case 7:
+		speed = 4;
+		numberMonster = 7;
+		break;
+		case 8:
+		speed = 4;
+ 		numberMonster = 8;
 		break;
 	}
 }
-
-var executeActionBoom = function(monster) {
-	if (MonsterOne.show) {
-		score += 10;
-		MonsterOne.show = false;
-		MonsterOne.click = false;
-		addElementBlood(MonsterOne.startX, MonsterOne.startY);
+// update monster
+var updateMonster = function(monster) {
+	monster.click = true;
+	if(monster.startX > monster.stopX) {
+		monster.startX -= monster.speed;
+	} else if(monster.startX < monster.stopX) {
+		monster.startX += monster.speed;
 	}
-
-	if (MonsterTwo.show) {
-		score += 10;
-		MonsterTwo.show = false;
-		MonsterTwo.click = false;
-		addElementBlood(MonsterTwo.startX, MonsterTwo.startY);
+	if(monster.startY > monster.stopY) {
+		monster.startY -= monster.speed;
+	} else if(monster.startY < monster.stopY) {
+		monster.startY += monster.speed;
 	}
-
-	if (MonsterThree.show) {
-		score += 10;
-		MonsterThree.show = false;
-		MonsterThree.click = false;
-		addElementBlood(MonsterThree.startX, MonsterThree.startY);
+	if(monster.startX == monster.stopX && monster.startY == monster.stopY) {
+		monster.startX = monster.stopX;
+		monster.startY = monster.stopY;
+		monster.stopX = monster.beginX;
+		monster.startY = monster.beginY;
 	}
-
-	if (MonsterFour.show) {
-		score += 10;
-		MonsterFour.show = false;
-		MonsterFour.click = false;
-		addElementBlood(MonsterFour.startX, MonsterFour.startY);
-	}
-
-	if (MonsterFive.show) {
-		score += 10;
-		MonsterFive.show = false;
-		MonsterFive.click = false;
-		addElementBlood(MonsterFive.startX, MonsterFive.startY);
-	}
-
-	if (MonsterSix.show) {
-		score += 10;
-		MonsterSix.show = false;
-		MonsterSix.click = false;
-		addElementBlood(MonsterSix.startX, MonsterSix.startY);
-	}
-
-	if (MonsterSeven.show) {
-		score += 10;
-		MonsterSeven.show = false;
-		MonsterSeven.click = false;
-		addElementBlood(MonsterSeven.startX, MonsterSeven.startY);
-	}
-
-	if (MonsterEight.show) {
-		score += 10;
-		MonsterEight.show = false;
-		MonsterEight.click = false;
-		addElementBlood(MonsterEight.startX, MonsterEight.startY);
-	}
-
-	if (MonsterNine.show) {
-		score += 10;
-		MonsterNine.show = false;
-		MonsterNine.click = false;
-		addElementBlood(MonsterNine.startX, MonsterNine.startY);
-	}
-
-	speed = speed;
-	var soundBoom = new Audio('music/boom.mp3');
-	soundBoom.play();
-	render();
-	for (var i = 0; i < numberMonster; i++) {
+	if(monster.startX == monster.beginX && monster.startY == monster.beginY){
+		monster.show = false;
+		monster.stop = true;
+		monster.startX = monster.beginX;
+		monster.startY = monster.beginY;
+		monster.stopX = monster.endX;
+		monster.stopY = monster.endY;
+		score -= 10;
+		heart --;
 		random();
 	}
 }
 
-// method refresh monster
-function refreshMonster(monster) {
+// random numbers show
+var random = function() {
+	if (!monsterOne.show){
+		refreshMonster(monsterOne);
+	}
+	if (!monsterTow.show){
+		refreshMonster(monsterTow);
+	}
+	if (!monsterThree.show){
+		refreshMonster(monsterThree);
+	}
+	if (!monsterFour.show){
+		refreshMonster(monsterFour);
+	}
+	if (!monsterFive.show) {
+		refreshMonster(monsterFive);
+	}
+	if (!monsterSix.show) {
+		refreshMonster(monsterSix);
+	}
+	if (!monsterSeven.show) {
+		refreshMonster(monsterSeven);
+	}
+	if (!monsterEight.show) {
+		refreshMonster(monsterEight);
+	}
+	var value = Math.floor((Math.random() * 8) +1);
+	switch(value) {
+		case 1:
+		if (!monsterOne.show) {
+			monsterOne.show = true;
+		}
+		break;
+		case 2:
+		if(!monsterTow.show) {
+			monsterTow.show = true;
+		}
+		break;
+		case 3:
+		if (!monsterThree.show){
+			monsterThree.show = true;
+		}
+		break;
+		case 4:
+		if (!monsterFour.show) {
+			monsterFour.show = true;
+		}
+		break;
+		case 5:
+		if (!monsterFive.show) {
+			monsterFive.show = true;
+		}
+		break;
+		case 6:
+		if(!monsterSix.show) {
+			monsterSix.show = true;
+		}
+		break;
+		case 7:
+		if(!monsterSeven.show) {
+			monsterSeven.show = true;
+		}
+		break;
+		case 8:
+		if (!monsterEight.show) {
+			monsterEight.show = true;
+		}
+		break;
+	}
+}
+var refreshMonster = function(monster) {
 	monster.show = false;
 	monster.startX = monster.beginX;
 	monster.startY = monster.beginY;
@@ -639,238 +553,245 @@ function refreshMonster(monster) {
 	monster.speed = speed;
 }
 
-// method restart game
-var restart = function() {
-	speed = 1;
-	run = true;
-	score = 10;
-	bgready = true;
-	numberMonster = 1;
-	score = 10;
-	tempScore = 10;
-	heart = 5;
-	numberBoom = 3;
-	numberStop = 3;
-	booleanPause = false;
-	booleanStop = false;
-	booleanBoom = true;
-	listBlood = new Array();
-	refreshMonster(MonsterOne);
-	refreshMonster(MonsterTwo);
-	refreshMonster(MonsterThree);
-	refreshMonster(MonsterFour);
-	refreshMonster(MonsterFive);
-	refreshMonster(MonsterSix);
-	refreshMonster(MonsterSeven);
-	refreshMonster(MonsterEight);
-	MonsterOne.show = true;
+// event blood after onClick monster
+var addElementBlood = function(initX, initY){
+	var Blood = {
+		initX: initX,
+		initY: initY
+	}
+	listBlood[listBlood.length] = Blood;
 }
 
-// method update monster
-var updateMonster = function(monster) {
-	monster.click = true;
+// update blood 
+var updateBlood = function() {
+	if(listBlood.length > 0) {
+		for (var i = 0; i < listBlood.length; i++) {
+			context.drawImage(imgBlood, listBlood[i].initX, listBlood[i].initY);
+		}
+	}
+}
 
+// update monsterCenter 
+var updateMonsterCenter = function (monster) {
 	if (monster.startX > monster.stopX) {
 		monster.startX -= monster.speed;
 	} else if (monster.startX < monster.stopX) {
 		monster.startX += monster.speed;
 	}
-
 	if (monster.startY > monster.stopY) {
 		monster.startY -= monster.speed;
 	} else if (monster.startY < monster.stopY) {
 		monster.startY += monster.speed;
 	}
-
-	if (monster.startX == monster.stopX && monster.startY == monster.stopY) {
-		monster.startX = monster.stopX;
-		monster.startY = monster.stopY;
-		monster.stopX = monster.beginX;
-		monster.stopY = monster.beginY;
-	}
-
-	if (monster.startX == monster.beginX && monster.startY == monster.beginY) {
-		monster.show = false;
-		monster.stop = true;
-		monster.startX = monster.beginX;
-		monster.startY = monster.beginY;
-		monster.stopX = monster.endX;
-		monster.stopY = monster.endY;
-		score -= 10;
-		heart--;
-		random();
-	}
-}
-
-// method update monster in center canvas
-var updateMonsterCenter = function(monster) {
-	if (monster.startX > monster.stopX) {
-		monster.startX -= monster.speed;
-	} else if (monster.startX < monster.stopX) {
-		monster.startX += monster.speed;
-	}
-
-	if (monster.startY > monster.stopY) {
-		monster.startY -= monster.speed;
-	} else if (monster.startY < monster.stopY) {
-		monster.startY += monster.speed;
-	}
-
+					
 	if (monster.startX == monster.stopX && monster.startY == monster.stopY) {
 		monster.startX = monster.stopX;
 		monster.startY = monster.stopY;
 		monster.stopX = Math.floor((Math.random() * 500) + 1);
 		monster.stopY = Math.floor((Math.random() * 500) + 1);
-	}
-}
-
-var updateBlood = function() {
-	if (listBlood.length > 0) {
-		for (var position = 0; position < listBlood.length; position++) {
-			context.drawImage(bloodImage, listBlood[position].initX, listBlood[position].initY);
 		}
-	}
-	
 }
 
-// method draw all element in canvas
+// daw monster, back, 
 var render = function() {
-	if (bgready) {
-		context.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+	if(background) {
+		context.drawImage(imgBackGround, 0, 0, canvas.width, canvas.height);
 	}
-
 	updateBlood();
-
-	if (MonsterOne.show) {
-		context.drawImage(monsterImage, MonsterOne.startX, MonsterOne.startY);
+	if (monsterOne.show) {
+		context.drawImage(imgMonster, monsterOne.startX, monsterOne.startY);
 	}
-
-	if (MonsterTwo.show) {
-		context.drawImage(monsterImage, MonsterTwo.startX, MonsterTwo.startY);
+	if (monsterTow.show) {
+		context.drawImage(imgMonster, monsterTow.startX, monsterTow.startY);
 	}
-
-	if (MonsterThree.show) {
-		context.drawImage(monsterImage, MonsterThree.startX, MonsterThree.startY);
+	if (monsterThree.show) {
+		context.drawImage(imgMonster, monsterThree.startX, monsterThree.startY);
 	}
-
-	if (MonsterFour.show) {
-		context.drawImage(monsterImage, MonsterFour.startX, MonsterFour.startY);
+	if (monsterFour.show) {
+		context.drawImage(imgMonster, monsterFour.startX, monsterFour.startY);
 	}
-
-	if (MonsterFive.show) {
-		context.drawImage(monsterImage, MonsterFive.startX, MonsterFive.startY);
+	if (monsterFive.show) {
+		context.drawImage(imgMonster, monsterFive.startX, monsterFive.startY);
 	}
-
-	if (MonsterSix.show) {
-		context.drawImage(monsterImage, MonsterSix.startX, MonsterSix.startY);
+	if (monsterSix.show) {
+		context.drawImage(imgMonster, monsterSix.startX, monsterSix.startY);
 	}
-
-	if (MonsterSeven.show) {
-		context.drawImage(monsterImage, MonsterSeven.startX, MonsterSeven.startY);
+	if (monsterSeven.show) {
+		context.drawImage(imgMonster, monsterSeven.startX, monsterSeven.startY);
 	}
-
-	if (MonsterEight.show) {
-		context.drawImage(monsterImage, MonsterEight.startX, MonsterEight.startY);
+	if (monsterEight.show) {
+		context.drawImage(imgMonster, monsterEight.startX, monsterEight.startY);
 	}
-
-	if (MonsterNine.show) {
-		updateMonsterCenter(MonsterNine);
-		context.drawImage(monsterImage, MonsterNine.startX, MonsterNine.startY);
+	if (monsterCenter.show) {
+		updateMonsterCenter(monsterCenter);
+		context.drawImage(imgMonster, monsterCenter.startX, monsterCenter.startY);
 	}
-
-	contextAction.clearRect(0, 0, footer.width, footer.height);
+	contextAction.clearRect( 0, 0, header.width, header.height);
 	contextAction.fillStyle = "rgb(29, 214, 4)";
 	contextAction.font = "20px Arial";
 	contextAction.fillText("Score: " + score, 10, 30);
-	contextAction.fillText("Random Monster: " + numberMonster, 300, 30);
-	contextAction.fillText("Heart: ", 10, 60);
+	contextAction.fillText("Random: " + numberMonster, 300, 30);
+	contextAction.fillText("Heart: " , 10, 60);
 	contextAction.fillText("Speed: " + speed, 10, 90);
 	var temp = 0;
 	for (var i = 0; i < heart; i++) {
-		contextAction.drawImage(heartitem, (70 + temp), 45, 20, 20);
+		contextAction.drawImage(imgHeart, (70+temp), 45, 20, 20);
 		temp += 20;
 	}
-	contextAction.drawImage(boomImage, 290, 60, 50, 40);
-	contextAction.drawImage(stopImage, 350, 60, 40, 40);
-	contextAction.drawImage(pauseImage, 400, 60, 40, 40);
-	contextAction.drawImage(restartImage, 450, 60, 40, 40);
-	contextAction.fillStyle = "#FFFFFF";
+	contextAction.drawImage(imgBoom, 290, 60, 50, 40);
+	contextAction.drawImage(imgStop, 350, 60, 40, 40);
+	contextAction.drawImage(imgPause, 400, 60, 40, 40);
+	contextAction.drawImage(imgRestart, 450, 60, 40, 40);
+	contextAction.fillStyle= "#FFFFFF";
 	contextAction.font = "35px Arial";
 	contextAction.fillText(numberBoom, 300, 75);
 	contextAction.fillText(numberStop, 360, 75);
-	contextAction.fillStyle = "rgb(230, 221, 240)";
-	contextAction.font = "20px Arial";
-	if (booleanPause) {
-		context.fillStyle = "#FFFFFF";
-		context.font = "50px Arial";
-		context.fillText("Pause!!!", 180, 240);
-	}
-
 	if (booleanStop) {
 		context.fillStyle = "#FFFFFF";
 		context.font = "50px Arial";
-		context.fillText("STOP!!!", 180, 240);
+		context.fillText("Stop", 180, 240);
+	}
+	if (booleanPause) {
+		context.fillStyle = "#FFFFFF";
+		context.font = "50px Arial";
+		context.fillText("Pause", 180, 240);
 	}
 }
 
-// method run
+			// draw event actionBoom 
+var executeActionBoom = function() {
+	if (monsterOne.show) {
+		score += 10;
+		monsterOne.show = false;
+		monsterOne.click = false;
+		addElementBlood(monsterOne.startX, monsterOne.startY);
+	}
+	if (monsterTow.show) {
+		score += 10;
+		monsterTow.show = false;
+		monsterTow.click = false;
+		addElementBlood(monsterTow.startX, monsterTow.startY);
+	}
+	if (monsterThree.show) {
+		score += 10;
+		monsterThree.show = false;
+		monsterThree.click = false;
+		addElementBlood(monsterThree.startX, monsterThree.startY);
+	}
+	if (monsterFour.show) {
+		score += 10;
+		monsterFour.show = false;
+		monsterFour.click = false;
+		addElementBlood(monsterFour.startX, monsterFour.startY);
+	}
+	if (monsterFive.show) {
+		score += 10;
+		monsterFive.show = false;
+		monsterFive.click = false;
+		addElementBlood(monsterFive.startX, monsterFive.startY);
+	}
+	if (monsterSix.show) {
+		score += 10;
+		monsterSix.show = false;
+		monsterSix.click = false;
+		addElementBlood(monsterSix.startX, monsterSix.startY);
+	}
+	if (monsterSeven.show) {
+		score += 10;
+		monsterSeven.show = false;
+		monsterSeven.click = false;
+		addElementBlood(monsterSeven.startX, monsterSeven.startY);
+	}
+	if (monsterEight.show) {
+		score += 10;
+		monsterEight.show = false;
+		monsterEight.click = false;
+		addElementBlood(monsterEight.startX, monsterEight.startY);
+	}
+	if (monsterCenter.show) {
+		score += 10;
+		monsterCenter.show = false;
+		monsterCenter.click = false;
+		addElementBlood(monsterCenter.startX, monsterCenter.startY);
+	}
+	speed = speed;
+	render();
+	for (var i = 0; i < numberMonster; i++) {
+		random();
+	}
+}
+
+			// event restart
+var restart = function() {
+	speed = 1;
+	run = true;
+	score = 10;
+	heart = 3;
+	background = true;
+	numberMonster = 1;
+	numberStop = 3;
+	numberBoom = 3;
+	tempScore = 10;
+	booleanPause = false;
+	booleanStop = false;
+	booleanBoom = true;
+	listBlood = new Array();
+	refreshMonster(monsterOne);
+	refreshMonster(monsterTow);
+	refreshMonster(monsterThree);
+	refreshMonster(monsterFour);
+	refreshMonster(monsterFive);
+	refreshMonster(monsterSix);
+	refreshMonster(monsterSeven);
+	refreshMonster(monsterEight);
+	monsterOne.show = true;
+}
+
+// main running
 var main = function() {
 	executeLever();
-	if (MonsterOne.show) {
-		updateMonster(MonsterOne);
+	if (monsterOne.show) {
+		updateMonster(monsterOne);
 	}
-	if (MonsterTwo.show) {
-		updateMonster(MonsterTwo);
+	if (monsterTow.show) {
+		updateMonster(monsterTow);
 	}
-	if (MonsterThree.show) {
-		updateMonster(MonsterThree);
+	if (monsterThree.show) {
+		updateMonster(monsterThree);
 	}
-	if (MonsterFour.show) {
-		updateMonster(MonsterFour);
+	if (monsterFour.show) {
+		updateMonster(monsterFour);
 	}
-	if (MonsterFive.show) {
-		updateMonster(MonsterFive);
+	if (monsterFive.show) {
+		updateMonster(monsterFive);
 	}
-	if (MonsterSix.show) {
-		updateMonster(MonsterSix);
+	if (monsterSix.show) {
+		updateMonster(monsterSix);
 	}
-	if (MonsterSeven.show) {
-		updateMonster(MonsterSeven);
+	if (monsterSeven.show) {
+		updateMonster(monsterSeven);
 	}
-	if (MonsterEight.show) {
-		updateMonster(MonsterEight);
+	if (monsterEight.show) {
+		updateMonster(monsterEight);
 	}
 	render();
-	if (score <= 0) {
-		context.fillStyle = "#FFFFFF";
-		context.font = "40px Arial";
-		context.fillText("Game Over!!!", 130, 200);
-		context.font = "20px Arial";
-		context.fillStyle = "#5bfa3f";
-		context.fillText("Score = " + score, 130, 240);
-		context.fillText("Best score = " + localStorage.getItem("bestScore"), 130, 280);
-	} else if (heart == 0) {
+	if (heart == 0) {
 		var temp = parseInt(localStorage.getItem("bestScore"));
 		if (temp < score) {
 			localStorage.setItem("bestScore", score);
 		}
 		context.fillStyle = "#FFFFFF";
 		context.font = "40px Arial";
-		context.fillText("Game Over!!!", 130, 200);
+		context.fillText("Game Over", 130, 200);
 		context.font = "20px Arial";
 		context.fillStyle = "#5bfa3f";
 		context.fillText("Score = " + score, 130, 240);
 		context.fillText("Best score = " + localStorage.getItem("bestScore"), 130, 280);
-	} else {
+		} else {
 		if (run) {
 			requestAnimationFrame(main);
 		}
-		
 	}
 }
-
-var windows = window;
-requestAnimationFrame = windows.requestAnimationFrame || windows.webkitRequestAnimationFrame 
-|| windows.msRequestAnimationFrame || windows.mozRequestAnimationFrame;
-
+//main run
 main();
