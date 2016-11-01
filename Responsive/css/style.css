@@ -19,7 +19,7 @@ body {
 }
 p{
 	line-height:1.6;
-	}
+}
 .clear_fix{
 	clear:both;
 }
@@ -91,10 +91,20 @@ div.header_info span{
 	color:#f0831e;
 	width:100%;
 	}				
-img.phone_sp{
+img.phone_sp
+{
 	display:none;
-	}	
-
+}	
+h2, h3,	h4
+{
+	width:auto;
+	text-align:left;
+	display:block;
+}	
+h4
+{
+	padding-left:22px;
+}	
 /*menu*/
 div.nav{	
 	width:100%;
@@ -2014,6 +2024,7 @@ h4.margin_top_depilation
 /* end introduction - start facial*/
 .title_1_facial{
 	font-weight: bold;
+	margin-left: 1%;
 }
 .box_1_facial{
 	
@@ -2067,3 +2078,94 @@ h4.margin_top_depilation
 {
 	margin-top: -15px;
 }
+/* binda*/
+.img2_binda
+{
+	float: left;
+}
+.img3_binda
+{
+	float: right;
+}
+.img_next_binda
+{
+	margin: 10% 0;
+}
+.smart_bihda
+{
+	display: none;
+}
+/* acty */
+.content_1_acty
+{
+	float: left;
+	text-align: left;
+	max-width: 417px;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 15px;
+
+}
+.width
+{
+	width: 100%;
+}
+/* hair_growth*/
+.box_1_hair_growth
+{
+	text-align: center;
+}
+/* case*/
+.img2_case
+{
+	margin: 1.6%;
+}	
+.list_img_case
+{
+	text-align: left;
+}
+/*qa*/
+.content_qa
+{
+	text-align: left;
+	margin: 1% 2%;
+	vertical-align: middle;
+
+}
+.content_qa img
+{
+vertical-align: middle;
+}
+.background_qa
+{
+	background: #A0A0A0;
+	margin-bottom: 5px;
+}
+/* access*/
+.img2_access_text
+{
+	width: 80%;
+	text-align: left;
+	margin: auto;
+
+}
+.access
+{
+	width: 100%;
+}
+.access img
+{
+	width: 80%;
+}
+.minimg_access
+{
+	max-width: 100%;
+    width: 332px;
+    height: 300px;
+    text-align: left;
+    display: inline-block;
+    margin: 2px;
+    vertical-align: bottom;
+}
+

@@ -32,29 +32,29 @@ img.header_logo{
 	height:auto;
 	}		
 		
-div.banner{
+.banner{
 	display:none;
 	}
-div.content_1{
+.content_1{
 	text-align:left;
 	max-width:100%;
 	}	
-div.content_1 p strong {
+.content_1 p strong {
     display: inline-block;
     float: left;
     margin-left:4%;
     margin-top: -18px;
 	width:96%;
 }
-div.box_1{
+.box_1{
 	margin:5px;
 	padding-bottom:5px;
 	}		
-div.aside{
+.aside{
 	float:none;
 	margin:25px auto;
 	}
-div.aside_box{
+.aside_box{
 	margin:6px auto;
 	}	
 	
@@ -65,16 +65,16 @@ div.footer{
 	background:url(../images/footer_bg.jpg) repeat left top;
 	}	
 	
-div.menu_footer_2 ul li.menu_1 a{
+.menu_footer_2 ul li.menu_1 a{
 	background:url(../images/footer_bullet_2.png) no-repeat scroll left center;
 	}	
-div.menu_footer_2 ul li{
+.menu_footer_2 ul li{
 	margin:2px 0 2px 8px
 	}	
-div.menu_footer_1 {
+.menu_footer_1 {
     padding: 20px 0 16px 20px;
 }		
-div.menu_footer_2{
+.menu_footer_2{
 	display:block;
 	}
 dl.index dt{
@@ -87,20 +87,20 @@ dl.index dd {
     padding-left: 23px;
 	width:auto;
 }
-div.f_l,
-div.menu_footer{
+.f_l,
+.menu_footer{
 	float:none;
 	}	
-div.f_l{
+.f_l{
 	margin-top:30px;
 	}
-div.menu_footer_1{
+.menu_footer_1{
 	max-width:288px;
 	}	
-div.menu_footer_1 ul{
+.menu_footer_1 ul{
 	max-width:144px;
 	}
-div.copyright {
+.copyright {
     line-height: 13px;
     padding: 10px 0 70px;
 }
@@ -708,6 +708,17 @@ p.text_right_depilation
 /*end Duy*/
 
 /* start Tuan */
-
-
+/* bihda */
+#next_down_bihda
+{
+	margin: 10% 0;
+}
+.pc_bihda
+{
+	display: none;
+}
+.smart_bihda
+{
+	display: table-row;
+}
 }

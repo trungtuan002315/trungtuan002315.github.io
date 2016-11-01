@@ -1,0 +1,147 @@
+@media screen and (max-width: 644px) {
+div.header{
+	float:none;
+	}	
+div.inner {
+	height: auto;
+	margin: 0 auto;
+	padding: 0 1%;
+	text-align: center;
+	width: 98%;
+	min-width:50%;
+	}
+.phone_pc{
+	display:none !important;
+	}	
+.phone_sp{
+	display:inline-block !important;
+	}	
+h1{
+	text-align:center;
+	}
+div.float,
+img.float,
+a.float,
+.float{
+	float:none;
+	text-align:center;
+	margin:7px auto;
+	display:inline-block;
+	}
+img.header_logo{
+	height:auto;
+	}		
+		
+div.banner{
+	display:none;
+	}
+
+img.header_logo
+{
+	height:auto;
+}		
+h2,
+h3,	
+h4{
+	width:auto;
+	text-align:left;
+	display:block;
+	}	
+h4{
+	padding-left:22px;
+	
+	}	
+/*article_1*/
+.text_article_1
+{
+	text-align: left;
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+}
+
+/*article 3*/
+
+.text_article_3 dt
+{
+    float: none;
+    padding: 0 0 0 15px;
+    margin: 0 0 0 15px;
+}
+.text_article_3 dd{
+	padding-left: 15px;
+    margin-left: 15px;
+}
+/*end article 3*/
+.title_article_3_footer
+{
+	text-align: left;
+}
+.text_article_3_footer{
+	text-align: left;
+}
+/*asside box3*/
+.box_3 p
+{
+	text-align: left;
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+}
+/*footer*/
+.footer
+{
+	text-align: center;
+}
+.menu_footer_1, .menu_footer_2
+{
+	margin: 0 auto ;
+
+}	
+div.footer_left{
+	margin-top:20px;
+	}	
+div.footer{
+	background:url(../images/footer_bg.jpg) repeat left top;
+	}	
+	
+.menu_footer_2 ul li.menu_1 a{
+	background:url(../images/footer_bullet_2.png) no-repeat scroll left center;
+	}	
+.menu_footer_2 ul li{
+	margin:2px 0 2px 8px
+	}	
+.menu_footer_1 {
+    padding: 20px 0 16px 20px;
+}		
+.menu_footer_2{
+	display:block;
+	}
+dl.index dt{
+	float:none;
+	margin-bottom:5px;
+	background:url(../images/bullet_1.jpg) no-repeat scroll left 4px ;
+	}
+dl.index dd {
+    display:block;
+    padding-left: 23px;
+	width:auto;
+}
+.f_l,
+.menu_footer{
+	float:none;
+	}	
+.f_l{
+	margin-top:30px;
+	}
+.menu_footer_1{
+	max-width:288px;
+	}	
+.menu_footer_1 ul{
+	max-width:144px;
+	}
+.copyright {
+    line-height: 13px;
+    padding: 10px 0 70px;
+}
+}
